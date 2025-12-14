@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sunny Mellow Crafts</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream:#FFF9F0;
+  --yellow:#FFD966;
+  --soft:#FFF3C4;
+  --brown:#7a4a2e;
+  --rope:#b08968;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#fff6dc 0%,#fff9f0 45%,#fffdf8 100%);
+  color:#333;
+}
+
+/* ================= LOADER ================= */
+.loader{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle,#fff3c4,#fff9f0);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity .4s ease;
+}
+.loader img{
+  width:120px;height:120px;border-radius:50%;
+  border:6px solid var(--yellow);
+  animation:pulse 1.6s ease-in-out infinite;
+}
+.loader h3{
+  font-family:'Pacifico',cursive;
+  color:var(--brown);
+  margin:14px 0 4px;
+}
+.loader p{font-size:.9rem;opacity:.8}
+
+@keyframes pulse{
+  0%{transform:scale(.9);box-shadow:0 0 0 0 rgba(255,217,102,.6)}
+  70%{transform:scale(1);box-shadow:0 0 0 20px rgba(255,217,102,0)}
+  100%{transform:scale(.9)}
+}
+
+/* ================= BANNER ================= */
+.bunting-header{
+  padding:40px 10px 30px;
+  text-align:center;
+  overflow:hidden;
+  position:relative;
+}
+
+.bunting-wrap{
+  max-width:1000px;
+  margin:auto;
+  position:relative;
+  transform-origin:top center;
+  animation:swing 5s ease-in-out infinite;
+}
+.bottom-wrap{
+  margin-top:20px;
+  animation:swingReverse 5.8s ease-in-out infinite;
+}
+
+.rope{
+  width:100%;
+  height:60px;
+  position:relative;
+  z-index:1;
+}
+.rope path{
+  fill:none;
+  stroke:var(--rope);
+  stroke-width:4;
+  stroke-linecap:round;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.1));
+}
+
+/* FLAGS - Now properly attached */
+.flags{
+  display:flex;
+  justify-content:center;
+  gap:0;
+  margin-top:-38px; /* Adjusted to touch the rope */
+  position:relative;
+  z-index:0; /* Below rope so thread appears to go under it */
+}
+.flags span{
+  width:42px;
+  height:50px;
+  background:linear-gradient(135deg, #f4ddb7 0%, #e8cfa8 100%);
+  clip-path:polygon(50% 100%,0 0,100% 0);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:#5a3a22;
+  position:relative;
+  font-size:1rem;
+  padding-top:8px;
+  box-shadow:0 3px 8px rgba(0,0,0,.12);
+}
+
+/* Colorful flags - LIGHTER colors */
+.flags span:nth-child(1){background:linear-gradient(135deg, #FFF59D 0%, #FFEB3B 100%);} /* Light Yellow */
+.flags span:nth-child(2){background:linear-gradient(135deg, #BBDEFB 0%, #90CAF9 100%);} /* Light Blue */
+.flags span:nth-child(3){background:linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);} /* Light Green */
+.flags span:nth-child(4){background:linear-gradient(135deg, #FFCDD2 0%, #EF9A9A 100%);} /* Light Red */
+.flags span:nth-child(5){background:linear-gradient(135deg, #F8BBD0 0%, #F48FB1 100%);} /* Light Pink */
+/* Gap - No knot */
+.flags span:nth-child(7){background:linear-gradient(135deg, #B3E5FC 0%, #81D4FA 100%);} /* Light Blue */
+.flags span:nth-child(8){background:linear-gradient(135deg, #FFF59D 0%, #FFEB3B 100%);} /* Light Yellow */
+.flags span:nth-child(9){background:linear-gradient(135deg, #BBDEFB 0%, #90CAF9 100%);} /* Light Blue */
+.flags span:nth-child(10){background:linear-gradient(135deg, #C8E6C9 0%, #A5D6A7 100%);} /* Light Green */
+.flags span:nth-child(11){background:linear-gradient(135deg, #FFCDD2 0%, #EF9A9A 100%);} /* Light Red */
+
+/* COMMENTED - Curve the first two flags */
+/* .flags span:nth-child(1){
+  transform:rotate(-4deg) translateY(-3px);
+  background:linear-gradient(135deg, #FFD966 0%, #FFC933 100%);
+}
+.flags span:nth-child(2){
+  transform:rotate(-2deg) translateY(-1px);
+  background:linear-gradient(135deg, #64B5F6 0%, #42A5F5 100%);
+} */
+
+/* COMMENTED - Curve the last two flags */
+/* .flags span:nth-last-child(1){
+  transform:rotate(4deg) translateY(-3px);
+  background:linear-gradient(135deg, #EF5350 0%, #E53935 100%);
+}
+.flags span:nth-last-child(2){
+  transform:rotate(2deg) translateY(-1px);
+  background:linear-gradient(135deg, #81C784 0%, #66BB6A 100%);
+} */
+
+/* Visible thread connecting to rope */
+.flags span::before{
+  content:'';
+  position:absolute;
+  top:-8px; /* Thread from flag to knot */
+  left:50%;
+  transform:translateX(-50%);
+  width:2px;
+  height:8px;
+  background:var(--rope);
+  display:none; /* Hidden - no threads */
+}
+
+/* Adjust thread for curved flags - COMMENTED */
+/* .flags span:nth-child(1)::before{
+  transform:translateX(-50%) rotate(4deg);
+  height:11px;
+  top:-11px;
+}
+.flags span:nth-child(2)::before{
+  transform:translateX(-50%) rotate(2deg);
+  height:9px;
+  top:-9px;
+}
+.flags span:nth-last-child(1)::before{
+  transform:translateX(-50%) rotate(-4deg);
+  height:11px;
+  top:-11px;
+}
+.flags span:nth-last-child(2)::before{
+  transform:translateX(-50%) rotate(-2deg);
+  height:9px;
+  top:-9px;
+} */
+
+/* Knot at top of thread */
+.flags span::after{
+  content:'';
+  position:absolute;
+  top:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:5px;
+  height:5px;
+  background:var(--rope);
+  border-radius:50%;
+  display:none; /* Hidden - no knots */
+}
+
+/* Adjust knot positions for curved flags - COMMENTED */
+/* .flags span:nth-child(1)::after{
+  top:-13px;
+}
+.flags span:nth-child(2)::after{
+  top:-11px;
+}
+.flags span:nth-last-child(1)::after{
+  top:-13px;
+}
+.flags span:nth-last-child(2)::after{
+  top:-11px;
+} */
+
+/* Gap between words */
+.flags .gap{
+  width:18px;
+  background:transparent;
+  clip-path:none;
+  box-shadow:none;
+  position:relative;
+}
+
+.tagline{
+  margin-top:35px;
+  font-size:.95rem;
+  color:#6a4a2f;
+  font-weight:400;
+  letter-spacing:.5px;
+}
+
+@keyframes swing{
+  0%{transform:rotate(1.1deg)}
+  50%{transform:rotate(-1.1deg)}
+  100%{transform:rotate(1.1deg)}
+}
+@keyframes swingReverse{
+  0%{transform:rotate(-1deg)}
+  50%{transform:rotate(1deg)}
+  100%{transform:rotate(-1deg)}
+}
+
+/* ================= CATEGORIES ================= */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+  gap:14px;
+  max-width:900px;
+  margin:32px auto;
+  padding:0 16px;
+}
+.category-card{
+  background:white;
+  border-radius:18px;
+  padding:12px 8px;
+  text-align:center;
+  box-shadow:0 8px 18px rgba(0,0,0,.08);
+  transition:.3s;
+  text-decoration:none;
+  color:inherit;
+}
+.category-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 30px rgba(0,0,0,.15);
+}
+.category-card img{width:56px;height:56px;border-radius:50%;margin-bottom:6px}
+.category-card span{font-size:.8rem;font-weight:500}
+
+/* ================= PRODUCTS ================= */
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 16px;
+}
+section h2{color:var(--brown);margin-bottom:20px}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.card{
+  background:white;
+  border-radius:20px;
+  padding:14px;
+  box-shadow:0 10px 22px rgba(0,0,0,.1);
+  transform:translateY(40px);
+  opacity:0;
+  transition:.6s ease;
+}
+.card.show{
+  transform:translateY(0);
+  opacity:1;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 36px rgba(0,0,0,.18);
+}
+.card img{
+  width:100%;height:190px;
+  object-fit:cover;border-radius:14px;
+}
+.card h3{
+  margin:10px 0 4px;
+  font-size:1.1rem;
+  color:var(--brown);
+}
+.price{
+  font-weight:600;
+  margin-top:6px;
+  color:var(--brown);
+  font-size:1.15rem;
+}
+
+button{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:30px;
+  border:none;
+  background:var(--yellow);
+  cursor:pointer;
+  font-weight:600;
+  font-size:.95rem;
+  transition:.3s;
+  font-family:'Poppins',sans-serif;
+}
+button:hover{
+  background:#ffd04d;
+  transform:scale(1.02);
+}
+
+/* ================= FOOTER ================= */
+footer{
+  text-align:center;
+  padding:20px;
+  font-size:.85rem;
+  background:var(--soft);
+  color:var(--brown);
+}
+
+/* Mobile */
+@media(max-width:600px){
+  .flags span{
+    width:34px;
+    height:42px;
+    font-size:.85rem;
+  }
+  .flags span::before{
+    height:10px;
+    top:-10px;
+  }
+  .flags span::after{
+    top:-14px;
+  }
+  .flags{
+    margin-top:-32px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <img src="https://via.placeholder.com/120" alt="Logo">
+  <h3>Sunny Mellow Crafts</h3>
+  <p>Handcrafting something cozy…</p>
+</div>
+
+<!-- BANNER -->
+<header class="bunting-header">
+  <div class="bunting-wrap">
+    <svg class="rope" viewBox="0 0 1000 120">
+      <path d="M20 40 Q500 85 980 40"/>
+    </svg>
+    <div class="flags">
+      <span>S</span><span>U</span><span>N</span><span>N</span><span>Y</span>
+      <span class="gap"></span>
+      <span>M</span><span>E</span><span>L</span><span>L</span><span>O</span><span>W</span>
+    </div>
+  </div>
+
+  <div class="bunting-wrap bottom-wrap">
+    <svg class="rope" viewBox="0 0 1000 120">
+      <path d="M120 40 Q500 75 880 40"/>
+    </svg>
+    <div class="flags">
+      <span>C</span><span>R</span><span>A</span><span>F</span><span>T</span><span>S</span>
+    </div>
+  </div>
+
+  <p class="tagline">Bright • Cheerful • Handmade Crochet</p>
+</header>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <a href="#flowers" class="category-card"><img src="https://via.placeholder.com/80" alt="Flowers"><span>Flowers</span></a>
+  <a href="#keychains" class="category-card"><img src="https://via.placeholder.com/80" alt="Keychains"><span>Keychains</span></a>
+  <a href="#toys" class="category-card"><img src="https://via.placeholder.com/80" alt="Toys"><span>Toys</span></a>
+  <a href="#accessories" class="category-card"><img src="https://via.placeholder.com/80" alt="Accessories"><span>Accessories</span></a>
+</div>
+
+<!-- PRODUCTS -->
+<section id="flowers"><h2>🌸 Flowers</h2><div class="products">
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Rose"><h3>Rose</h3><p class="price">₹399</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Tulip"><h3>Tulip</h3><p class="price">₹349</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Sunflower"><h3>Sunflower</h3><p class="price">₹449</p><button>Buy Now</button></div>
+</div></section>
+
+<section id="keychains"><h2>🔑 Keychains</h2><div class="products">
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Heart"><h3>Heart</h3><p class="price">₹299</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Mini Flower"><h3>Mini Flower</h3><p class="price">₹249</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Animal"><h3>Animal</h3><p class="price">₹349</p><button>Buy Now</button></div>
+</div></section>
+
+<section id="toys"><h2>🧸 Toys</h2><div class="products">
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Teddy"><h3>Teddy</h3><p class="price">₹1299</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Bunny"><h3>Bunny</h3><p class="price">₹1199</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Doll"><h3>Doll</h3><p class="price">₹999</p><button>Buy Now</button></div>
+</div></section>
+
+<section id="accessories"><h2>🧷 Accessories</h2><div class="products">
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Bookmark"><h3>Bookmark</h3><p class="price">₹249</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Hair Clip"><h3>Hair Clip</h3><p class="price">₹199</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Coaster"><h3>Coaster</h3><p class="price">₹499</p><button>Buy Now</button></div>
+</div></section>
+
+<footer>© 2025 Sunny Mellow Crafts • Handmade with Love</footer>
+
+<script>
+window.addEventListener("DOMContentLoaded",()=>{
+  setTimeout(()=>{
+    const l=document.getElementById("loader");
+    l.style.opacity="0";
+    setTimeout(()=>l.style.display="none",400);
+  },1200);
+
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting) e.target.classList.add("show");
+    });
+  },{threshold:.2});
+
+  document.querySelectorAll(".card").forEach(c=>observer.observe(c));
+});
+</script>
+
+</body>
+</html>
