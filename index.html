@@ -430,7 +430,24 @@ footer{
   background: var(--rope);
   border-radius: 50%;
 }
-
+ /* ======= About ======= */
+  .about{
+  max-width:900px;
+  margin:40px auto;
+  padding:36px 20px;
+  background:#fff3c4;
+  border-radius:26px;
+  text-align:center;
+}
+.about h2{
+  color:var(--brown);
+  margin-bottom:14px;
+}
+.about p{
+  font-size:clamp(.95rem,2.5vw,1.05rem);
+  line-height:1.7;
+  color:#4a3322;
+}
 
 
 /* Mobile */
@@ -500,6 +517,7 @@ footer{
 <nav class="soft-nav">
   <a href="#home">Home</a>
   <a href="#flowers">Products</a>
+  <a href="#about">About</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -537,10 +555,20 @@ footer{
 <div class="card"><img src="images/coaster.jpg" alt="Coaster"><h3>Coaster</h3><p class="price">₹499</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
 </div></section>
 
-<section id="contact" class="contact-section">
-  <h2>📬 Get in Touch</h2>
+<section id="about" class="about">
+<h2>About Sunny Mellow Crafts</h2>
+<p>
+Sunny Mellow Crafts is a warm celebration of color, comfort, and creativity.
+Every piece is carefully crocheted by hand, turning simple yarn into meaningful,
+joy-filled keepsakes. From cheerful flowers to playful toys and charming
+accessories, each creation carries a little sunshine—made slowly, thoughtfully,
+and with heart.
+</p>
+</section>
 
-  <div class="contact-links">
+<footer id="contact">
+<h2>📬 Get in Touch</h2>
+<div class="contact-links">
     <a href="https://www.instagram.com/sunnymellowcrafts" target="_blank">
       📸 Instagram: @sunnymellowcrafts
     </a>
@@ -549,7 +577,8 @@ footer{
       ✉️ Email: sunnymellowcrafts@gmail.com
     </a>
   </div>
-</section>
+<p style="font-size:.8rem;">© 2025 Sunny Mellow Crafts • Handmade with Love</p>
+</footer>
 
 
 <footer>© 2025 Sunny Mellow Crafts • Handmade with Love</footer>
@@ -587,5 +616,6 @@ Product ID: ${productId}`;
 
 </body>
 </html>
+
 
 
