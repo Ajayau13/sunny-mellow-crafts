@@ -330,6 +330,45 @@ button:hover{
   transform:scale(1.02);
 }
 
+/* ================= CONTACT =============== */
+.contact-section {
+  text-align:center;
+  padding:20px;
+  font-size:.85rem;
+  background:var(--soft);
+  color:var(--brown);
+  width: 100%;
+}
+
+.contact-section h2 {
+  color: var(--brown);
+  margin-bottom: 14px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  text-decoration: none;
+  color: #5a3a22;
+  font-size: 0.95rem;
+  background: white;
+  padding: 10px 16px;
+  border-radius: 30px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.1);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.contact-links a:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+}
+
+
 /* ================= FOOTER ================= */
 footer{
   text-align:center;
@@ -338,6 +377,61 @@ footer{
   background:var(--soft);
   color:var(--brown);
 }
+
+.soft-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 20px 0 10px;
+}
+
+.soft-nav a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--brown);
+  position: relative;
+}
+
+.soft-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--rope);
+  transition: width 0.3s ease;
+}
+
+.soft-nav a:hover::after {
+  width: 100%;
+}
+
+.section-divider {
+  position: relative;
+  margin: 30px auto 10px;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--rope),
+    transparent
+  );
+}
+
+.section-divider .knot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: var(--rope);
+  border-radius: 50%;
+}
+
+
 
 /* Mobile */
 @media(max-width:600px){
@@ -364,17 +458,23 @@ footer{
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <img src="https://via.placeholder.com/120" alt="Logo">
+  <img src="images/sunnymellow.jpg" alt="Logo">
   <h3>Sunny Mellow Crafts</h3>
   <p>Handcrafting something cozy…</p>
 </div>
 
 <!-- BANNER -->
-<header class="bunting-header">
+<header id="home" class="bunting-header">
   <div class="bunting-wrap">
-    <svg class="rope" viewBox="0 0 1000 120">
-      <path d="M20 40 Q500 85 980 40"/>
-    </svg>
+<svg class="rope" viewBox="0 0 1000 160" preserveAspectRatio="none">
+  <!-- Long stretched rope -->
+  <path d="M90 40 Q500 120 900 40"
+        stroke="#b08968"
+        stroke-width="4"
+        fill="none"
+        stroke-linecap="round"/>
+</svg>
+
     <div class="flags">
       <span>S</span><span>U</span><span>N</span><span>N</span><span>Y</span>
       <span class="gap"></span>
@@ -393,6 +493,16 @@ footer{
 
   <p class="tagline">Bright • Cheerful • Handmade Crochet</p>
 </header>
+<div class="section-divider">
+  <span class="knot"></span>
+</div>
+
+<nav class="soft-nav">
+  <a href="#home">Home</a>
+  <a href="#flowers">Products</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 
 <!-- CATEGORIES -->
 <div class="categories">
@@ -404,28 +514,43 @@ footer{
 
 <!-- PRODUCTS -->
 <section id="flowers"><h2>🌸 Flowers</h2><div class="products">
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Rose"><h3>Rose</h3><p class="price">₹399</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Tulip"><h3>Tulip</h3><p class="price">₹349</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Sunflower"><h3>Sunflower</h3><p class="price">₹449</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Rose"><h3>Rose</h3><p class="price">₹399</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Tulip"><h3>Tulip</h3><p class="price">₹349</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Sunflower"><h3>Sunflower</h3><p class="price">₹449</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
 </div></section>
 
 <section id="keychains"><h2>🔑 Keychains</h2><div class="products">
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Heart"><h3>Heart</h3><p class="price">₹299</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Mini Flower"><h3>Mini Flower</h3><p class="price">₹249</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Animal"><h3>Animal</h3><p class="price">₹349</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Heart"><h3>Heart</h3><p class="price">₹299</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Mini Flower"><h3>Mini Flower</h3><p class="price">₹249</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Animal"><h3>Animal</h3><p class="price">₹349</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
 </div></section>
 
 <section id="toys"><h2>🧸 Toys</h2><div class="products">
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Teddy"><h3>Teddy</h3><p class="price">₹1299</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Bunny"><h3>Bunny</h3><p class="price">₹1199</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Doll"><h3>Doll</h3><p class="price">₹999</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Teddy"><h3>Teddy</h3><p class="price">₹1299</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Bunny"><h3>Bunny</h3><p class="price">₹1199</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Doll"><h3>Doll</h3><p class="price">₹999</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
 </div></section>
 
 <section id="accessories"><h2>🧷 Accessories</h2><div class="products">
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Bookmark"><h3>Bookmark</h3><p class="price">₹249</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Hair Clip"><h3>Hair Clip</h3><p class="price">₹199</p><button>Buy Now</button></div>
-<div class="card"><img src="https://via.placeholder.com/300x200" alt="Coaster"><h3>Coaster</h3><p class="price">₹499</p><button>Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Bookmark"><h3>Bookmark</h3><p class="price">₹249</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Hair Clip"><h3>Hair Clip</h3><p class="price">₹199</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
+<div class="card"><img src="https://via.placeholder.com/300x200" alt="Coaster"><h3>Coaster</h3><p class="price">₹499</p><button onclick="buyNow('FL-001','Rose Flower')">Buy Now</button></div>
 </div></section>
+
+<section id="contact" class="contact-section">
+  <h2>📬 Get in Touch</h2>
+
+  <div class="contact-links">
+    <a href="https://www.instagram.com/sunnymellowcrafts" target="_blank">
+      📸 Instagram: @sunnymellowcrafts
+    </a>
+
+    <a href="mailto:sunnymellowcrafts@gmail.com">
+      ✉️ Email: sunnymellowcrafts@gmail.com
+    </a>
+  </div>
+</section>
+
 
 <footer>© 2025 Sunny Mellow Crafts • Handmade with Love</footer>
 
@@ -445,6 +570,19 @@ window.addEventListener("DOMContentLoaded",()=>{
 
   document.querySelectorAll(".card").forEach(c=>observer.observe(c));
 });
+</script>
+
+<script>
+function buyNow(productId, productName) {
+  const phone = "91XXXXXXXXXX"; // replace with real number
+  const message = `Hi! I'm interested in this crochet product:
+  
+Product: ${productName}
+Product ID: ${productId}`;
+  
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}
 </script>
 
 </body>
